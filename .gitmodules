@@ -1,3 +1,6 @@
 [submodule "RandWireNN"]
 	path = RandWireNN
 	url = git://github.com/JiaminRen/RandWireNN.git
+[submodule "GraphRicciCurvature"]
+	path = GraphRicciCurvature
+	url = git://github.com/seglass5/GraphRicciCurvature.git
