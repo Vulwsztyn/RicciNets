@@ -1,0 +1,3 @@
+[submodule "RandWireNN"]
+	path = RandWireNN
+	url = git://github.com/JiaminRen/RandWireNN.git
