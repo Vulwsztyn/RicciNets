@@ -12,7 +12,7 @@ import logging
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.ERROR)
 
 # load GraphRicciCuravture package
-from GraphRicciCurvature.OllivierRicci2 import OllivierRicci
+from GraphRicciCurvature.OllivierRicci import OllivierRicci
 
 from nodemass import undirected_to_dag
 from surgery import surgery
