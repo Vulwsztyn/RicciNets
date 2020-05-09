@@ -1,5 +1,10 @@
-# PartIIIProject
-Repo for my Part III Project, Training High Performance Compact Neural Networks
+# Part III Project - RicciNets: Curvature-guided pruning of high-performance neural networks
+The GitHub repository for my Part III Project on compact neural architecture search.
+
+The code can be run in Colaboratory, following "PartIIIProject.ipynb". This requires the other scripts here to be saved to a Google Drive. They can also be used from Github with minor alterations.
+
+The project uses a curvature-guided diffusion process, Ricci flow, to prune a graph before mapping it to a network.
+
 
 Meeting 10/02/20
 - Looked back over research proposal
