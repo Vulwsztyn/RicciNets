@@ -1,9 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 
-G = nx.DiGraph()
-#G.add_edges_from([('A', 'B'), ('A', 'C'), ('D', 'B'), ('E', 'C'), ('E','F'), ('B', 'H'), ('B', 'G'), ('B', 'F'), ('C', 'G'), ('Q', 'D')])
-
 densities = dict()
 
 def get_node_properties(node_label, directed_graph):
@@ -23,12 +20,13 @@ def get_node_mass(node_label, directed_graph, alpha, beta, gamma, delta):
 
 def get_densities(directed_graph):
 	for x in directed_graph.nodes():
-#	print(x)
 		densities[x] = get_node_mass(x,G,0.5,0.5,0.5,0.5)
 	return densities
 	
 def undirected_to_dag(undirected_graph):
+	# Initialise directed graph
 	directed_graph = nx.DiGraph()
+	# Connect nodes to input and output nodes
 	for i in range(len(list(undirected_graph))):
 		neighbors = list(undirected_graph.neighbors(i))	
 		for n in neighbors:
@@ -36,6 +34,7 @@ def undirected_to_dag(undirected_graph):
 				directed_graph.add_edge(i, n)
 			elif i > n:
 				directed_graph.add_edge(n, i)
+	# Add directed edges in the direction of increasing node label
 	for m in range(len(list(undirected_graph))):
 		n_O = len(list(directed_graph.successors(m)))
 		n_I = len(list(directed_graph.predecessors(m)))
@@ -45,30 +44,3 @@ def undirected_to_dag(undirected_graph):
 			directed_graph.add_edge(0, m)
 	directed_graph.remove_edges_from(nx.selfloop_edges(directed_graph))
 	return directed_graph
-
-
-H = nx.watts_strogatz_graph(10,5,0.5)
-#for i in range(len(list(H))):
-#	neighbors = list(H.neighbors(i))
-#	for n in neighbors:
-#		if n>i:
-#			G.add_edge(i,n)
-#		elif n < i:
-#			G.add_edge(n,i)
-plt.clf()
-#nx.draw(H)
-nx.draw_shell(H, with_labels=True)
-plt.savefig('H.png')
-
-G = undirected_to_dag(H)
-plt.clf()
-#nx.draw(G)
-nx.draw_shell(G, with_labels=True)
-plt.savefig('G.png')
-#plt.clf()
-#B_properties = get_node_properties('B', G)
-#B_mass = get_node_mass('B', G, 0.5,0.5,0.5,0.5)
-
-#print(B_mass)
-
-#print(densities)
